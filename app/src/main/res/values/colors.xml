@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#40798C</color>
+    <color name="colorPrimaryDark">#1F363D</color>
+    <color name="colorAccent">#0571CF</color>
+
+    <color name="colorGunMetal">#1F363D</color>
+    <color name="colorTealBlue">#40798C</color>
+    <color name="colorGreenSheen">#70A9A1</color>
+    <color name="colorCambridgeBlue">#9EC1A3</color>
+    <color name="colorPastelGrey">#CFE0C3</color>
 </resources>

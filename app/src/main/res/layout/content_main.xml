@@ -5,17 +5,82 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorCambridgeBlue"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/app_bar_main"
         tools:context=".MainActivity">
 
     <TextView
+            android:text="APPożyczę"
+            android:id="@+id/mainTitle_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:textSize="40sp"
+            android:textColor="@color/colorTealBlue"
 
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/booksSectionButton"/>
+
+    <TextView
+            android:text="Co kiedy i komu pożyczyłem?"
+            android:id="@+id/subTitle_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTealBlue"
+            android:textSize="18sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/mainTitle_TextView"/>
+    <Button
+            android:text="Książki"
+            android:id="@+id/booksSectionButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="@color/colorTealBlue"
+            android:background="@drawable/button_main_menu"
+
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+            android:text="Gry"
+            android:id="@+id/gamesSectionButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="@color/colorTealBlue"
+            android:background="@drawable/button_main_menu"
+
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintHorizontal_bias="0.501"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/booksSectionButton"/>
 </android.support.constraint.ConstraintLayout>
