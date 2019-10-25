@@ -11,9 +11,9 @@
             android:theme="@style/AppTheme">
         <activity android:name=".activities.games.AddGameActivity">
         </activity>
-        <activity android:name=".activities.books.AddBookActivity">
-        </activity>
         <activity android:name=".activities.games.GamesActivity">
+        </activity>
+        <activity android:name=".activities.books.AddBookActivity">
         </activity>
         <activity android:name=".activities.books.BooksActivity">
         </activity>

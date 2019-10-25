@@ -7,8 +7,6 @@ import androidx.room.Insert
 interface BookDAO {
 
     @Insert
-    fun saveBookToDB(book: BookEntity) {
-
-    }
+    fun saveBook(book: BookEntity)
 
 }

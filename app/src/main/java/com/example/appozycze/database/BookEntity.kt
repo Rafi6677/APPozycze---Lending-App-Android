@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 class BookEntity {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     var bookID: Int = 0
 
     @ColumnInfo(name = "bookTitle")
@@ -21,5 +21,14 @@ class BookEntity {
 
     @ColumnInfo(name = "bookLendTo")
     var bookLendTo: String = ""
+
+    constructor()
+
+    constructor(title: String, author: String, status: String, lendTo: String) {
+        bookTitle = title
+        bookAuthor = author
+        bookStatus = status
+        bookLendTo = lendTo
+    }
 
 }

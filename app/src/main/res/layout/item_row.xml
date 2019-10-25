@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorCambridgeBlue"
+        android:weightSum="3">
+
+    <TextView
+            android:text="Kolumna pierwsza"
+            android:textColor="@color/colorPastelGrey"
+            android:textSize="17sp"
+            android:id="@+id/firstColumnRow_TextView"
+            android:layout_gravity="center"
+            android:layout_margin="1dp"
+            android:padding="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    <TextView
+            android:text="Kolumna druga"
+            android:textColor="@color/colorPastelGrey"
+            android:textSize="17sp"
+            android:id="@+id/secondColumnRow_TextView"
+            android:layout_gravity="center"
+            android:layout_margin="1dp"
+            android:padding="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    <TextView
+            android:text="Wypożyczona"
+            android:textColor="@color/colorPastelGrey"
+            android:textSize="17sp"
+            android:id="@+id/thirdColumnRow_TextView"
+            android:layout_gravity="center"
+            android:layout_margin="1dp"
+            android:padding="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+
+</LinearLayout>

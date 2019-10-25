@@ -7,8 +7,6 @@ import androidx.room.Insert
 interface GameDAO {
 
     @Insert
-    fun saveGameToDB(book: BookEntity) {
-
-    }
+    fun saveGameToDB(book: BookEntity)
 
 }
