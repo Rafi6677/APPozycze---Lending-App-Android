@@ -36,6 +36,7 @@
                 android:text="Autor"
                 android:textColor="@color/colorPastelGrey"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:id="@+id/bookAuthor_TitleTextView"
                 android:background="@drawable/textview_title_background"
@@ -49,6 +50,7 @@
                 android:text="Tytuł"
                 android:textColor="@color/colorPastelGrey"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:id="@+id/bookTitle_TitleTextView"
                 android:background="@drawable/textview_title_background"
@@ -62,6 +64,7 @@
                 android:text="Status"
                 android:textColor="@color/colorPastelGrey"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 android:gravity="center"
                 android:id="@+id/bookStatus_TitleTextView"
                 android:background="@drawable/textview_title_background"
@@ -81,6 +84,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            android:id="@+id/bookList_RecyclerView"/>
+            android:id="@+id/booksList_RecyclerView"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

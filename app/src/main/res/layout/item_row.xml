@@ -9,7 +9,7 @@
 
     <TextView
             android:text="Kolumna pierwsza"
-            android:textColor="@color/colorPastelGrey"
+            android:textColor="@color/colorTealBlue"
             android:textSize="17sp"
             android:id="@+id/firstColumnRow_TextView"
             android:layout_gravity="center"
@@ -21,7 +21,7 @@
 
     <TextView
             android:text="Kolumna druga"
-            android:textColor="@color/colorPastelGrey"
+            android:textColor="@color/colorTealBlue"
             android:textSize="17sp"
             android:id="@+id/secondColumnRow_TextView"
             android:layout_gravity="center"
@@ -33,7 +33,7 @@
 
     <TextView
             android:text="Wypożyczona"
-            android:textColor="@color/colorPastelGrey"
+            android:textColor="@color/colorTealBlue"
             android:textSize="17sp"
             android:id="@+id/thirdColumnRow_TextView"
             android:layout_gravity="center"
