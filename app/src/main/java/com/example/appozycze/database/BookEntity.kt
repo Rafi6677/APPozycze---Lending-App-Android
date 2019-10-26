@@ -22,6 +22,9 @@ class BookEntity {
     @ColumnInfo(name = "bookLendTo")
     var bookLendTo: String = ""
 
+    @ColumnInfo(name = "bookLendDate")
+    var bookLendDate: String = ""
+
     constructor()
 
     constructor(title: String, author: String, status: String, lendTo: String) {
@@ -29,6 +32,7 @@ class BookEntity {
         bookAuthor = author
         bookStatus = status
         bookLendTo = lendTo
+        bookLendDate = ""
     }
 
 }

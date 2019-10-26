@@ -1,5 +1,6 @@
 package com.example.appozycze.activities.books
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -52,5 +53,10 @@ class AddBookActivity : AppCompatActivity() {
 
         Toast.makeText(this, "Dodano książkę", Toast.LENGTH_SHORT)
             .show()
+
+        finish()
+        val intent = Intent(this, BooksActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 }

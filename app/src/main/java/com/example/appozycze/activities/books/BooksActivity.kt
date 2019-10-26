@@ -21,6 +21,10 @@ class BooksActivity : AppCompatActivity() {
     private val adapter = GroupAdapter<ViewHolder>()
     private var booksList: List<BookEntity> ?= null
 
+    companion object {
+        const val BOOK_KEY = "bookKey"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_books)
@@ -41,14 +45,29 @@ class BooksActivity : AppCompatActivity() {
     }
 
     private fun setupData() {
+        adapter.clear()
+
         Thread{
             booksList = AppDB.getInstance(this)!!.bookDao().getBooks()
+            booksList!!.sortedBy {
+                it.bookAuthor
+            }
 
             booksList!!.forEach {
                 adapter.add(BookItem(it))
             }
 
-            booksList_RecyclerView.adapter = adapter
+            adapter.setOnItemClickListener { item, _ ->
+                val bookItem = item as BookItem
+                val id = bookItem.book.bookID
+                val intent = Intent(this, EditBookActivity::class.java)
+                intent.putExtra(BOOK_KEY, id)
+                startActivity(intent)
+            }
+
+            runOnUiThread {
+                booksList_RecyclerView.adapter = adapter
+            }
 
         }.start()
     }
