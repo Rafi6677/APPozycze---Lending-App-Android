@@ -1,6 +1,7 @@
 package com.example.appozycze.database
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import java.util.*
@@ -25,5 +26,8 @@ interface BookDAO {
 
     @Query("UPDATE BookEntity SET bookTitle = :title, bookAuthor = :author WHERE bookID LIKE :id")
     fun updateBookData(id: Int, title: String, author: String)
+
+    @Delete
+    fun deleteBook(book: BookEntity)
 
 }

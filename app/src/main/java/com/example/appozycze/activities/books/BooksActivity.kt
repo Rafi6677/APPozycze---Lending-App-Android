@@ -3,6 +3,8 @@ package com.example.appozycze.activities.books
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appozycze.R
@@ -28,6 +30,8 @@ class BooksActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_books)
+
+        supportActionBar!!.title = "Książki"
 
         addBook_Button.setOnClickListener {
             val intent = Intent(this, AddBookActivity::class.java)
@@ -63,6 +67,31 @@ class BooksActivity : AppCompatActivity() {
                 val intent = Intent(this, EditBookActivity::class.java)
                 intent.putExtra(BOOK_KEY, id)
                 startActivity(intent)
+            }
+
+            adapter.setOnItemLongClickListener { item, _ ->
+                val bookItem = item as BookItem
+
+                AlertDialog.Builder(this)
+                    .setTitle("UWAGA")
+                    .setMessage("Czy na pewno chcesz usunąć tę książkę?")
+                    .setPositiveButton("OK") { _, _ ->
+                        Thread{
+                            AppDB.getInstance(this)!!.bookDao().deleteBook(item.book)
+
+                            runOnUiThread {
+                                adapter.clear()
+                                setupData()
+                            }
+                        }.start()
+
+                        Toast.makeText(this, "Książka została usunięta.", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    .setNegativeButton("Anuluj") { _, _ -> }
+                    .show()
+
+                item.isLongClickable
             }
 
             runOnUiThread {

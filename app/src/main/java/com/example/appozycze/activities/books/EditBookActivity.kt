@@ -3,13 +3,11 @@ package com.example.appozycze.activities.books
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Debug
 import android.view.View
 import android.widget.Toast
 import com.example.appozycze.R
 import com.example.appozycze.database.AppDB
 import com.example.appozycze.database.BookEntity
-import kotlinx.android.synthetic.main.activity_add_book.*
 import kotlinx.android.synthetic.main.activity_edit_book.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,6 +20,8 @@ class EditBookActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_book)
+
+        supportActionBar!!.title = "Edycja książki"
 
         id = intent.getIntExtra(BooksActivity.BOOK_KEY, 0)
 
