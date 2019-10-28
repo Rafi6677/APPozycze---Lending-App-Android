@@ -16,9 +16,9 @@ class BookItem(val book: BookEntity) : Item<ViewHolder>() {
         viewHolder.itemView.secondColumnRow_TextView.text = book.bookTitle
 
         if (book.bookStatus == "AT_HOME") {
-            viewHolder.itemView.thirdColumnRow_TextView.text = "W Domu"
+            viewHolder.itemView.thirdColumnRow_CheckBox.isChecked = true
         } else {
-            viewHolder.itemView.thirdColumnRow_TextView.text = "Wypożyczona"
+            viewHolder.itemView.thirdColumnRow_CheckBox.isChecked = false
         }
 
     }

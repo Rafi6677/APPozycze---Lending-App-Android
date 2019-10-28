@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [(BookEntity::class), (GameEntity::class)], version = 1)
+@Database(entities = [(BookEntity::class), (GameEntity::class)], version = 2)
 abstract class AppDB : RoomDatabase() {
 
     abstract fun bookDao(): BookDAO

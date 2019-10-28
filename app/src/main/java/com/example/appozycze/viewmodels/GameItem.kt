@@ -13,7 +13,7 @@ class GameItem: Item<ViewHolder>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.firstColumnRow_TextView.text = ""
         viewHolder.itemView.secondColumnRow_TextView.text = ""
-        viewHolder.itemView.thirdColumnRow_TextView.text = ""
+        viewHolder.itemView.thirdColumnRow_CheckBox.isChecked = true
     }
 
 }

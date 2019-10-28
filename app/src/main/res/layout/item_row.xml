@@ -5,7 +5,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/colorCambridgeBlue"
-        android:weightSum="3">
+        android:weightSum="7">
 
     <TextView
             android:text="Kolumna pierwsza"
@@ -17,7 +17,7 @@
             android:padding="3dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
 
     <TextView
             android:text="Kolumna druga"
@@ -29,19 +29,16 @@
             android:padding="3dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
-    <TextView
-            android:text="Wypożyczona"
-            android:textColor="@color/colorTealBlue"
-            android:textSize="17sp"
-            android:id="@+id/thirdColumnRow_TextView"
-            android:layout_gravity="center"
-            android:layout_margin="1dp"
-            android:padding="3dp"
+            android:layout_weight="3"/>
+    <CheckBox
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:id="@+id/thirdColumnRow_CheckBox"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@null"
+            android:translationX="40dp" android:clickable="false"/>
 
 
 </LinearLayout>
