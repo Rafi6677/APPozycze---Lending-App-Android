@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.appozycze.R
 import com.example.appozycze.database.AppDB
 import com.example.appozycze.database.BookEntity
@@ -111,11 +112,28 @@ class EditBookActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
+
+                deleteBook_EditButton.setOnClickListener {
+                    AlertDialog.Builder(this)
+                        .setTitle("UWAGA")
+                        .setMessage("Czy na pewno chcesz usunąć tę książkę?")
+                        .setPositiveButton("OK") { _, _ ->
+                            Thread{
+                                AppDB.getInstance(this)!!.bookDao().deleteBook(book!!)
+                            }.start()
+
+                            Toast.makeText(this, "Książka została usunięta.", Toast.LENGTH_SHORT)
+                                .show()
+
+                            finish()
+                            val intent = Intent(this, BooksActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(intent)
+                        }
+                        .setNegativeButton("Anuluj") { _, _ -> }
+                        .show()
+                }
             }
         }.start()
-
-        cancelSavingBook_EditButton.setOnClickListener {
-            finish()
-        }
     }
 }

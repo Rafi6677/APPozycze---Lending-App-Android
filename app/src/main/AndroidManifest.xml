@@ -10,6 +10,9 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".activities.books.EditBookActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".activities.books.BooksActivity"/>
         </activity>
         <activity android:name=".activities.games.AddGameActivity">
         </activity>

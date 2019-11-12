@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+                android:paddingTop="10sp"
+              android:paddingBottom="20sp"
+                android:layout_gravity="right"
+                android:background="@color/colorGunMetal">
+
+    <TextView
+            android:id="@+id/bookFilterTitle_TextView"
+            android:text="Filtruj wg:"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorTealBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32sp"/>
+    <RadioGroup
+            android:id="@+id/bookFilter_RadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16sp">
+        <RadioButton
+                android:id="@+id/bookAuthorFilter_RadioButton"
+                android:text="Autor"
+                android:textColor="@color/colorCambridgeBlue"
+                android:textSize="22sp"
+                android:buttonTint="@color/colorCambridgeBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="author"/>
+        <RadioButton
+                android:id="@+id/bookTitleFilter_RadioButton"
+                android:text="Tytuł"
+                android:textColor="@color/colorCambridgeBlue"
+                android:textSize="22sp"
+                android:buttonTint="@color/colorCambridgeBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="title"/>
+        <RadioButton
+                android:id="@+id/bookStatusFilter_RadioButton"
+                android:text="Status"
+                android:textColor="@color/colorCambridgeBlue"
+                android:textSize="22sp"
+                android:buttonTint="@color/colorCambridgeBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="status"/>
+    </RadioGroup>
+
+
+</LinearLayout>

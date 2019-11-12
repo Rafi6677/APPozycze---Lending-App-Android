@@ -1,8 +1,11 @@
 package com.example.appozycze.activities.books
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,13 +18,14 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_books.*
 import androidx.recyclerview.widget.DividerItemDecoration
-
+import com.example.appozycze.viewmodels.BookFilter
 
 
 class BooksActivity : AppCompatActivity() {
 
     private val adapter = GroupAdapter<ViewHolder>()
     private var booksList: List<BookEntity> ?= null
+    private var bookFilter = BookFilter.Title
 
     companion object {
         const val BOOK_KEY = "bookKey"
@@ -52,12 +56,31 @@ class BooksActivity : AppCompatActivity() {
         adapter.clear()
 
         Thread{
+            val sortedList: List<BookEntity>
             booksList = AppDB.getInstance(this)!!.bookDao().getBooks()
-            booksList!!.sortedBy {
-                it.bookAuthor
+
+            when (bookFilter) {
+                BookFilter.Author -> {
+                    println("autor")
+                    sortedList = booksList!!.sortedBy {
+                        it.bookAuthor
+                    }
+                }
+                BookFilter.Title -> {
+                    println("tytuł")
+                    sortedList =booksList!!.sortedBy {
+                        it.bookTitle
+                    }
+                }
+                BookFilter.Status -> {
+                    println("status")
+                    sortedList = booksList!!.sortedBy {
+                        it.bookStatus
+                    }
+                }
             }
 
-            booksList!!.forEach {
+            sortedList.forEach {
                 adapter.add(BookItem(it))
             }
 
@@ -99,5 +122,54 @@ class BooksActivity : AppCompatActivity() {
             }
 
         }.start()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.books, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.books_filter -> {
+                openFilterDialog()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun openFilterDialog(){
+        val values = arrayOf<CharSequence>(" Autor ", " Tytuł ", " Status ")
+        var checkedItem: Int = -1
+
+        checkedItem = when (bookFilter) {
+            BookFilter.Author -> 0
+            BookFilter.Title -> 1
+            BookFilter.Status -> 2
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle("Sortuj wg:")
+            .setSingleChoiceItems(values, checkedItem, DialogInterface.OnClickListener { dialog, which ->
+                when (which) {
+                    0 -> {
+                        bookFilter = BookFilter.Author
+                        dialog.dismiss()
+                        setupData()
+                    }
+                    1 -> {
+                        bookFilter = BookFilter.Title
+                        dialog.dismiss()
+                        setupData()
+                    }
+                    2 -> {
+                        bookFilter = BookFilter.Status
+                        dialog.dismiss()
+                        setupData()
+                    }
+                }
+            })
+            .show()
     }
 }
