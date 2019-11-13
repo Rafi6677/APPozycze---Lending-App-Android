@@ -27,6 +27,12 @@ interface BookDAO {
     @Query("UPDATE BookEntity SET bookTitle = :title, bookAuthor = :author WHERE bookID LIKE :id")
     fun updateBookData(id: Int, title: String, author: String)
 
+    @Query("DELETE FROM BookEntity")
+    fun deleteAllBooks()
+
+    @Query("DELETE FROM GameEntity")
+    fun deleteAllGames()
+
     @Delete
     fun deleteBook(book: BookEntity)
 

@@ -18,6 +18,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_books.*
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.appozycze.activities.MainActivity
 import com.example.appozycze.viewmodels.BookFilter
 
 
@@ -25,7 +26,7 @@ class BooksActivity : AppCompatActivity() {
 
     private val adapter = GroupAdapter<ViewHolder>()
     private var booksList: List<BookEntity> ?= null
-    private var bookFilter = BookFilter.Title
+    private var bookFilter = BookFilter.Author
 
     companion object {
         const val BOOK_KEY = "bookKey"
@@ -137,6 +138,14 @@ class BooksActivity : AppCompatActivity() {
             }
             else -> return super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onBackPressed() {
+        finish()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        super.onBackPressed()
     }
 
     private fun openFilterDialog(){
