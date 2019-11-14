@@ -10,6 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 abstract class AppDB : RoomDatabase() {
 
     abstract fun bookDao(): BookDAO
+    abstract fun gameDao(): GameDAO
 
     companion object {
         private var instance: AppDB? = null

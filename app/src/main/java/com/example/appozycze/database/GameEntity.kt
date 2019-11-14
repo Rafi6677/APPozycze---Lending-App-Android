@@ -22,4 +22,17 @@ class GameEntity {
     @ColumnInfo(name = "gameLendTo")
     var gameLendTo: String = ""
 
+    @ColumnInfo(name = "gameLendDate")
+    var gameLendDate: String = ""
+
+    constructor()
+
+    constructor(title: String, platform: String, status: String, lendTo: String) {
+        gameTitle = title
+        gamePlatform = platform
+        gameStatus = status
+        gameLendTo = lendTo
+        gameLendDate = ""
+    }
+
 }

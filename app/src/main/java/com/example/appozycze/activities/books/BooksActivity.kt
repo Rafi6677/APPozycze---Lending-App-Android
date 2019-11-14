@@ -62,19 +62,16 @@ class BooksActivity : AppCompatActivity() {
 
             when (bookFilter) {
                 BookFilter.Author -> {
-                    println("autor")
                     sortedList = booksList!!.sortedBy {
                         it.bookAuthor
                     }
                 }
                 BookFilter.Title -> {
-                    println("tytuł")
                     sortedList =booksList!!.sortedBy {
                         it.bookTitle
                     }
                 }
                 BookFilter.Status -> {
-                    println("status")
                     sortedList = booksList!!.sortedBy {
                         it.bookStatus
                     }
