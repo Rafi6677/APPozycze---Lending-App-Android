@@ -9,7 +9,7 @@ import androidx.room.Query
 interface GameDAO {
 
     @Insert
-    fun saveGameToDB(game: GameEntity)
+    fun saveGame(game: GameEntity)
 
     @Query("SELECT * FROM GameEntity")
     fun getGames(): List<GameEntity>

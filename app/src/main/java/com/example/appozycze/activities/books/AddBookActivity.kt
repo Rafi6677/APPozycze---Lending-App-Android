@@ -15,6 +15,8 @@ class AddBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_book)
 
+        supportActionBar?.title = "Dodaj książkę"
+
         cancelSavingBook_Button.setOnClickListener {
             finish()
         }

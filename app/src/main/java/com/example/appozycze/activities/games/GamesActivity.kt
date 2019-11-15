@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appozycze.R
 import com.example.appozycze.activities.MainActivity
+import com.example.appozycze.activities.SettingsActivity
 import com.example.appozycze.activities.books.AddBookActivity
 import com.example.appozycze.activities.books.BooksActivity
 import com.example.appozycze.activities.books.EditBookActivity
@@ -27,6 +28,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_books.*
 import kotlinx.android.synthetic.main.activity_games.*
+import java.lang.IllegalStateException
 
 class GamesActivity : AppCompatActivity() {
 
@@ -60,9 +62,9 @@ class GamesActivity : AppCompatActivity() {
     }
 
     private fun setupData() {
-        adapter.clear()
-
         Thread{
+            adapter.clear()
+
             val sortedList: List<GameEntity>
             gamesList = AppDB.getInstance(this)!!.gameDao().getGames()
 
@@ -84,8 +86,10 @@ class GamesActivity : AppCompatActivity() {
                 }
             }
 
-            sortedList.forEach {
-                adapter.add(GameItem(it))
+            runOnUiThread {
+                sortedList.forEach {
+                    adapter.add(GameItem(it))
+                }
             }
 
             adapter.setOnItemClickListener { item, _ ->
@@ -135,6 +139,20 @@ class GamesActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.books_section -> {
+                finish()
+                val intent = Intent(this, BooksActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                return true
+            }
+            R.id.settings -> {
+                finish()
+                val intent = Intent(this, SettingsActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                return true
+            }
             R.id.games_filter -> {
                 openFilterDialog()
                 return true
@@ -168,17 +186,24 @@ class GamesActivity : AppCompatActivity() {
                     0 -> {
                         gameFilter = GameFilter.Title
                         dialog.dismiss()
-                        setupData()
+                        try {
+                            setupData()
+                        } catch (e: IllegalStateException){}
                     }
                     1 -> {
                         gameFilter = GameFilter.Platform
                         dialog.dismiss()
-                        setupData()
+                        try {
+                            setupData()
+                        } catch (e: IllegalStateException){}
+
                     }
                     2 -> {
                         gameFilter = GameFilter.Status
                         dialog.dismiss()
-                        setupData()
+                        try {
+                            setupData()
+                        } catch (e: IllegalStateException){}
                     }
                 }
             })

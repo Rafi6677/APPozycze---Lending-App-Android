@@ -19,6 +19,8 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_books.*
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.appozycze.activities.MainActivity
+import com.example.appozycze.activities.SettingsActivity
+import com.example.appozycze.activities.games.GamesActivity
 import com.example.appozycze.viewmodels.BookFilter
 
 
@@ -78,8 +80,10 @@ class BooksActivity : AppCompatActivity() {
                 }
             }
 
-            sortedList.forEach {
-                adapter.add(BookItem(it))
+            runOnUiThread {
+                sortedList.forEach {
+                    adapter.add(BookItem(it))
+                }
             }
 
             adapter.setOnItemClickListener { item, _ ->
@@ -129,6 +133,20 @@ class BooksActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.games_section -> {
+                finish()
+                val intent = Intent(this, GamesActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                return true
+            }
+            R.id.settings -> {
+                finish()
+                val intent = Intent(this, SettingsActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                return true
+            }
             R.id.books_filter -> {
                 openFilterDialog()
                 return true

@@ -5,6 +5,181 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.games.EditGameActivity">
+        tools:context=".activities.books.AddBookActivity"
+        android:background="@color/colorCambridgeBlue">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/linearLayout2"
+    >
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="6">
+            <TextView
+                    android:text="Tytuł:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorGunMetal"
+                    android:id="@+id/gameTitle_EditGameTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:paddingLeft="3dp"/>
+            <EditText
+                    android:id="@+id/gameTitle_EditGameInput"
+                    android:textColor="@color/colorTealBlue"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences"
+                    android:ems="10"
+                    android:layout_weight="4"
+                    android:layout_marginRight="3dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="6">
+            <TextView
+                    android:text="Platforma:"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorGunMetal"
+                    android:id="@+id/gameAuthor_AddGameTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:paddingLeft="3dp"/>
+
+            <RadioGroup
+                    android:id="@+id/platform_EditGameRadioGroup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4">
+
+                <RadioButton
+                        android:id="@+id/pcPlatform_EditGameRadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PC"
+                        android:textColor="@color/colorTealBlue"
+                        android:buttonTint="@color/colorTealBlue"
+                        android:textSize="18sp"
+                        android:checked="true"/>
+                <RadioButton
+                        android:id="@+id/ps4Platform_EditGameRadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PS4"
+                        android:textColor="@color/colorTealBlue"
+                        android:buttonTint="@color/colorTealBlue"
+                        android:textSize="18sp"/>
+                <RadioButton
+                        android:id="@+id/xboxOnePlatform_EditGameRadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Xbox One"
+                        android:textColor="@color/colorTealBlue"
+                        android:buttonTint="@color/colorTealBlue"
+                        android:textSize="18sp"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/linearLayout3"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        <Button
+                android:id="@+id/deleteGame_Button"
+                android:text="usuń"
+                android:textColor="@color/colorGunMetal"
+                android:textSize="20sp"
+                android:background="@drawable/button_main_menu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="1dp"/>
+        <Button
+                android:id="@+id/saveGame_Button"
+                android:text="Zapisz zmiany"
+                android:textColor="@color/colorGunMetal"
+                android:textSize="20sp"
+                android:background="@drawable/button_main_menu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="2dp"/>
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/gameStatus_EditTextView"
+            android:text="Wypożycz dla:"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorGunMetal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/gameDateStatus_EditTextView"/>
+    <TextView
+            android:id="@+id/gameDateStatus_EditTextView"
+            android:text="Dnia: 26-10-2019"
+            android:textSize="22sp"
+            android:textColor="@color/colorGunMetal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/linearLayout3"/>
+    <EditText
+            android:id="@+id/lendName_GameEditTextInput"
+            android:textColor="@color/colorTealBlue"
+            android:textSize="18sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:ems="10"
+
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/gameStatus_EditTextView" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="Imię i nazwisko"/>
+    <Button
+            android:id="@+id/lendGame_EditButton"
+            android:text="Wypożycz"
+            android:textColor="@color/colorGunMetal"
+            android:textSize="18sp"
+            android:background="@drawable/button_main_menu"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/lendName_GameEditTextInput"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -71,7 +71,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_books -> {
-
+                val intent = Intent(this, BooksActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.nav_games -> {
+                val intent = Intent(this, GamesActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.nav_settings -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
             }
         }
 
