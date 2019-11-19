@@ -3,13 +3,10 @@ package com.example.appozycze.activities.games
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.RadioButton
 import android.widget.Toast
 import com.example.appozycze.R
-import com.example.appozycze.activities.books.BooksActivity
 import com.example.appozycze.database.AppDB
 import com.example.appozycze.database.GameEntity
-import kotlinx.android.synthetic.main.activity_add_book.*
 import kotlinx.android.synthetic.main.activity_add_game.*
 
 class AddGameActivity : AppCompatActivity() {

@@ -39,9 +39,7 @@ class EditBookActivity : AppCompatActivity() {
                     lendBook_EditButton.text = "Wypożycz"
                     lendName_BookEditTextInput.isClickable = true
 
-                    lendBook_EditButton.setOnClickListener {
-
-                    }
+                    lendBook_EditButton.setOnClickListener {}
                 } else {
                     bookStatus_EditTextView.text = "Wypożyczona dla:"
                     bookDateStatus_EditTextView.visibility = View.VISIBLE
@@ -50,9 +48,7 @@ class EditBookActivity : AppCompatActivity() {
                     lendName_BookEditTextInput.isClickable = false
                     lendBook_EditButton.text = "Zgłoś zwrot"
 
-                    lendBook_EditButton.setOnClickListener {
-
-                    }
+                    lendBook_EditButton.setOnClickListener {}
                 }
 
                 lendBook_EditButton.setOnClickListener {

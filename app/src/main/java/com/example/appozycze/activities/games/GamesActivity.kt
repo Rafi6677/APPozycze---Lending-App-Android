@@ -14,19 +14,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appozycze.R
 import com.example.appozycze.activities.MainActivity
 import com.example.appozycze.activities.SettingsActivity
-import com.example.appozycze.activities.books.AddBookActivity
 import com.example.appozycze.activities.books.BooksActivity
-import com.example.appozycze.activities.books.EditBookActivity
 import com.example.appozycze.database.AppDB
-import com.example.appozycze.database.BookEntity
 import com.example.appozycze.database.GameEntity
-import com.example.appozycze.viewmodels.BookFilter
-import com.example.appozycze.viewmodels.BookItem
 import com.example.appozycze.viewmodels.GameFilter
 import com.example.appozycze.viewmodels.GameItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_books.*
 import kotlinx.android.synthetic.main.activity_games.*
 import java.lang.IllegalStateException
 
@@ -63,8 +57,6 @@ class GamesActivity : AppCompatActivity() {
 
     private fun setupData() {
         Thread{
-            adapter.clear()
-
             val sortedList: List<GameEntity>
             gamesList = AppDB.getInstance(this)!!.gameDao().getGames()
 
@@ -87,45 +79,44 @@ class GamesActivity : AppCompatActivity() {
             }
 
             runOnUiThread {
+                adapter.clear()
+
                 sortedList.forEach {
                     adapter.add(GameItem(it))
                 }
-            }
 
-            adapter.setOnItemClickListener { item, _ ->
-                val gameItem = item as GameItem
-                val id = gameItem.game.gameID
-                val intent = Intent(this, EditGameActivity::class.java)
-                intent.putExtra(GAME_KEY, id)
-                startActivity(intent)
-            }
+                adapter.setOnItemClickListener { item, _ ->
+                    val gameItem = item as GameItem
+                    val id = gameItem.game.gameID
+                    val intent = Intent(this, EditGameActivity::class.java)
+                    intent.putExtra(GAME_KEY, id)
+                    startActivity(intent)
+                }
 
-            adapter.setOnItemLongClickListener { item, _ ->
-                val gameItem = item as GameItem
+                adapter.setOnItemLongClickListener { item, _ ->
+                    val gameItem = item as GameItem
 
-                AlertDialog.Builder(this)
-                    .setTitle("UWAGA")
-                    .setMessage("Czy na pewno chcesz usunąć tę grę?")
-                    .setPositiveButton("OK") { _, _ ->
-                        Thread{
-                            AppDB.getInstance(this)!!.gameDao().deleteGame(item.game)
+                    AlertDialog.Builder(this)
+                        .setTitle("UWAGA")
+                        .setMessage("Czy na pewno chcesz usunąć tę grę?")
+                        .setPositiveButton("OK") { _, _ ->
+                            Thread {
+                                AppDB.getInstance(this)!!.gameDao().deleteGame(gameItem.game)
 
-                            runOnUiThread {
-                                adapter.clear()
-                                setupData()
-                            }
-                        }.start()
+                                runOnUiThread {
+                                    adapter.clear()
+                                    setupData()
+                                }
+                            }.start()
 
-                        Toast.makeText(this, "Gra została usunięta.", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                    .setNegativeButton("Anuluj") { _, _ -> }
-                    .show()
+                            Toast.makeText(this, "Gra została usunięta.", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        .setNegativeButton("Anuluj") { _, _ -> }
+                        .show()
 
-                item.isLongClickable
-            }
-
-            runOnUiThread {
+                    item.isLongClickable
+                }
                 gameList_RecyclerView.adapter = adapter
             }
 
@@ -181,7 +172,7 @@ class GamesActivity : AppCompatActivity() {
 
         AlertDialog.Builder(this)
             .setTitle("Sortuj wg:")
-            .setSingleChoiceItems(values, checkedItem, DialogInterface.OnClickListener { dialog, which ->
+            .setSingleChoiceItems(values, checkedItem) { dialog, which ->
                 when (which) {
                     0 -> {
                         gameFilter = GameFilter.Title
@@ -206,7 +197,7 @@ class GamesActivity : AppCompatActivity() {
                         } catch (e: IllegalStateException){}
                     }
                 }
-            })
+            }
             .show()
     }
 }

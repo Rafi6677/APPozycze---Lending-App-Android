@@ -23,7 +23,6 @@ import com.example.appozycze.activities.SettingsActivity
 import com.example.appozycze.activities.games.GamesActivity
 import com.example.appozycze.viewmodels.BookFilter
 
-
 class BooksActivity : AppCompatActivity() {
 
     private val adapter = GroupAdapter<ViewHolder>()
@@ -102,7 +101,7 @@ class BooksActivity : AppCompatActivity() {
                     .setMessage("Czy na pewno chcesz usunąć tę książkę?")
                     .setPositiveButton("OK") { _, _ ->
                         Thread{
-                            AppDB.getInstance(this)!!.bookDao().deleteBook(item.book)
+                            AppDB.getInstance(this)!!.bookDao().deleteBook(bookItem.book)
 
                             runOnUiThread {
                                 adapter.clear()
@@ -175,7 +174,7 @@ class BooksActivity : AppCompatActivity() {
 
         AlertDialog.Builder(this)
             .setTitle("Sortuj wg:")
-            .setSingleChoiceItems(values, checkedItem, DialogInterface.OnClickListener { dialog, which ->
+            .setSingleChoiceItems(values, checkedItem) { dialog, which ->
                 when (which) {
                     0 -> {
                         bookFilter = BookFilter.Author
@@ -193,7 +192,7 @@ class BooksActivity : AppCompatActivity() {
                         setupData()
                     }
                 }
-            })
+            }
             .show()
     }
 }
